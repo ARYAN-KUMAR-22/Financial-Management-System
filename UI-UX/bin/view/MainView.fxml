@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController">
+    <top>
+        <ToolBar>
+            <Button text="Upload Dataset" onAction="#handleUpload"/>
+            <Button text="Analyze" onAction="#handleAnalyze"/>
+            <Button text="Predict Next 30 Days" onAction="#handlePredict"/>
+        </ToolBar>
+    </top>
+    <center>
+        <TabPane>
+            <Tab text="Transactions">
+                <TableView fx:id="transactionTable">
+                    <columns>
+                        <TableColumn fx:id="dateCol" text="Date" />
+                        <TableColumn fx:id="descCol" text="Description" />
+                        <TableColumn fx:id="categoryCol" text="Category" />
+                        <TableColumn fx:id="amountCol" text="Amount" />
+                    </columns>
+                </TableView>
+            </Tab>
+            <Tab text="Analytics">
+                <VBox spacing="10">
+                    <PieChart fx:id="categoryChart"/>
+                    <BarChart fx:id="monthlyChart">
+                        <xAxis><CategoryAxis label="Month"/></xAxis>
+                        <yAxis><NumberAxis label="Amount"/></yAxis>
+                    </BarChart>
+                </VBox>
+            </Tab>
+            <Tab text="Prediction">
+                <LineChart fx:id="predictionChart">
+                    <xAxis><CategoryAxis label="Day"/></xAxis>
+                    <yAxis><NumberAxis label="Predicted Expense"/></yAxis>
+                </LineChart>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
